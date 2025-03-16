@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.21)
 
 PROJECT(dmeventpp)
 
@@ -19,4 +19,8 @@ MESSAGE(STATUS "VERSION: ${DMEVENTPP_VERSION}")
 
 OPTION(USE_DMEVENTPP "use dmeventpp" OFF)
 
-ExeImport("test" "")
+InterfaceImport("dmeventpp" "include" "")
+
+if(PROJECT_IS_TOP_LEVEL)
+    ExeImport("test" "dmeventpp")
+endif()
